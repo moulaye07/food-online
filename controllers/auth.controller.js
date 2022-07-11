@@ -1,5 +1,8 @@
 const UserModel = require('../models/user.model');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config({ path: './config/.env' })
+
 
 
 exports.signup = async (req, res) => {
@@ -49,8 +52,20 @@ exports.signin = async (req, res) => {
             });
         }
 
-        res.status(500).json({
-            connexion: 'connected',
+        const payload = {
+            user: {
+                _id: user._id,
+            },
+        };
+
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: parseInt(process.env.JWT_EXPIRE) }, (err, token) => {
+            if (err) console.log('jwt error: ', err);
+            const { _id, username, email, role } = user;
+
+            res.json({
+                token,
+                user: { _id, username, email, role },
+            });
         });
 
     } catch (err) {
