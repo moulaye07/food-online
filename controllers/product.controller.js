@@ -25,3 +25,19 @@ exports.createProduct = async (req, res) => {
 		});
 	}
 };
+
+exports.readAllProducts = async (req, res) => {
+	try {
+		const products = await productModel.find({}).populate(
+			'category',
+			'category'
+		);
+
+		res.json({ products });
+	} catch (err) {
+		console.log(err, 'readAllProducts error product.controller');
+		res.status(500).json({
+			errorMessage: 'Veuillez reessayer',
+		});
+	}
+};
