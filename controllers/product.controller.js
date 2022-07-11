@@ -41,3 +41,18 @@ exports.readAllProducts = async (req, res) => {
 		});
 	}
 };
+
+exports.readProduct = async (req, res) => {
+	try {
+		const idOfProduct = req.params.idOfProduct;
+		const product = await productModel.findById(idOfProduct);
+
+		res.json(product);
+	} catch (err) {
+		console.log(err, 'read error in productController');
+		res.status(500).json({
+			errorMessage: 'Veuillez reessayer',
+		});
+	}
+};
+
