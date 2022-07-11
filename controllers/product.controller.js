@@ -25,3 +25,34 @@ exports.createProduct = async (req, res) => {
 		});
 	}
 };
+
+exports.readAllProducts = async (req, res) => {
+	try {
+		const products = await productModel.find({}).populate(
+			'category',
+			'category'
+		);
+
+		res.json({ products });
+	} catch (err) {
+		console.log(err, 'readAllProducts error product.controller');
+		res.status(500).json({
+			errorMessage: 'Veuillez reessayer',
+		});
+	}
+};
+
+exports.readProduct = async (req, res) => {
+	try {
+		const idOfProduct = req.params.idOfProduct;
+		const product = await productModel.findById(idOfProduct);
+
+		res.json(product);
+	} catch (err) {
+		console.log(err, 'read error in productController');
+		res.status(500).json({
+			errorMessage: 'Veuillez reessayer',
+		});
+	}
+};
+

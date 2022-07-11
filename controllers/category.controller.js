@@ -25,3 +25,13 @@ exports.createCategory = async (req, res) => {
 		});
 	}
 };
+
+exports.readAllCategory = async (req, res) => {
+	try {
+		const categories = await categoryModel.find({});
+		res.status(200).json({categories});
+	} catch (err) {
+		console.log('readAllCategory error in category.controller: ', err);
+		res.status(500).json({errorMessage: 'Veuillez reessayer'});
+	}
+};
