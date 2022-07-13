@@ -2,12 +2,12 @@
 function getYear() {
     var currentDate = new Date();
     var currentYear = currentDate.getFullYear();
-    document.querySelector("#displayYear").innerHTML = currentYear;
+    //document.querySelector("#displayYear").innerHTML = currentYear;
 }
 
 getYear();
 
-
+/*
 // isotope js
 $(window).on('load', function () {
     $('.filters_menu li').click(function () {
@@ -61,3 +61,4 @@ $(".client_owl-carousel").owlCarousel({
         }
     }
 });
+*/
