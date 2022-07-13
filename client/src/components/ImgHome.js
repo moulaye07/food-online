@@ -1,5 +1,5 @@
 import React from 'react';
-import imageHome from './hero-bg.jpg';
+import imageHome from './images/hero-bg.jpg';
 
 
 const ImgHome = () => {
