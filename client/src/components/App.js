@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Menu from './Menu';
 import AboutUs from './AboutUs';
 import Book from './Book';
-import Avis from './Avis';
+import Footer from './Footer';
 
 const App =  () => (
     <div className="App">
@@ -11,8 +11,7 @@ const App =  () => (
       <Menu />
       <AboutUs />
       <Book />
-      <Avis />
-      
+      <Footer />
     </div>
 );
 
