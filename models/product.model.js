@@ -17,6 +17,10 @@ const productSchema = new mongoose.Schema(
 			type: 'String',
 			trim: true,
 		},
+		fileName: {
+			type: 'String',
+			required: true,
+		},
 		category: {
 			type: ObjectId,
 			ref: 'category',

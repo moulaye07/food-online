@@ -2,6 +2,7 @@ const productModel = require('../models/product.model');
 const fs = require('fs');
 
 exports.createProduct = async (req, res) => {
+	const { filename } = req.file;
 	const {
 		name,
 		description,
@@ -11,7 +12,7 @@ exports.createProduct = async (req, res) => {
 	} = req.body;
 
 	try {
-        let product = await productModel.create({name, description, price: parseInt(price), category, quantity : parseInt(quantity)});
+        let product = await productModel.create({name, description, price: parseInt(price), category,fileName:filename, quantity : parseInt(quantity)});
 		product = await product.save();
 
 		res.json({
