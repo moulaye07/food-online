@@ -1,24 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from './Navbar';
-import Menu from './Menu';
-import AboutUs from './AboutUs';
-import Book from './Book';
-import Footer from './Footer';
+import Home from './Home';
+
+
 
 const App =  () => {
     return (
-      <BrowserRouter>
-        <Navbar />
-          <main>
-          
-            <Routes>
-                <Route exact path='/' element={<Menu />} />
-            </Routes>
-            
-          </main>
-      </BrowserRouter>
+      <Router>
+            <Navbar />
+            <Switch>
+                <Route path='/' exact component={Home} />
+                <Redirect to="/"/>
+            </Switch>
+        </Router>
     )
     };
 

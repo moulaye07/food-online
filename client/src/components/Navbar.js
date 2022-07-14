@@ -8,7 +8,7 @@ const Navbar = () => {
     const showNavBar = () => (
         <div class="hero_area">
             <ImgHome />
-            <header class="header_section">
+            <header class="header_section" style={{backgroundColor:"black"}}>
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
                         <a class="navbar-brand" href="index.html">
