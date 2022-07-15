@@ -4,13 +4,23 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth.routes');
 const productRoutes = require('./routes/product.routes');
 const categoryRoutes = require('./routes/category.routes');
-
-require('dotenv').config({ path: './config/.env' })
-
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+
+const corsOptions = {
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+    'allowedHeaders': ['sessionId', 'Content-type'],
+    'exposedHeaders': ['sessionId'],
+    'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    'preflightContinue': false
+}
+
+app.use(cors(corsOptions));
+
+
+
 app.use('/api/auth', authRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/category', categoryRoutes);

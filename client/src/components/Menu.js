@@ -1,8 +1,14 @@
 import React from 'react';
 import pizza from './images/f1.png';
+import { useSelector } from 'react-redux';
+
 
 
 const Menu = () => {
+
+	const { products } = useSelector(state => state.products);
+	const { categories } = useSelector(state => state.categories);
+
 
     const showMenu = () => (
         <section class="food_section layout_padding-bottom">
@@ -14,10 +20,9 @@ const Menu = () => {
                 </div>
                 <ul class="filters_menu">
                     <li class="active" data-filter="*">All</li>
-                    <li data-filter=".burger">Burger</li>
-                    <li data-filter=".pizza">Pizza</li>
-                    <li data-filter=".pasta">Pasta</li>
-                    <li data-filter=".fries">Fries</li>
+                    {categories && categories.map(category => (
+                        <li key={category._id} data-filter=".fries">{category.category}</li>
+                    ))}
                 </ul>
                 <div class="filters-content">
                     <div class="row grid">
